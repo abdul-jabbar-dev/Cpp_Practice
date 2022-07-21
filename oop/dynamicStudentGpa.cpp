@@ -24,9 +24,9 @@ public:
 Students* create_students(int i){
     string name;
     int student_id;
-    cout<<"enter student "<<i<<" Name: "<<endl;
+    cout<<"Enter student "<<i<<" Name: "<<endl;
     cin>>name;
-    cout<<"enter student ID: "<<endl;
+    cout<<"Enter student ID: "<<endl;
     cin>>student_id;
     Students* student = new Students(name,student_id);
     int gpas[5];
@@ -37,7 +37,6 @@ Students* create_students(int i){
     student->add_gpa(gpas);
     return student;
 };
-
 int main(){
 
 int n;
