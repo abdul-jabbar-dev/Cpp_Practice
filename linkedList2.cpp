@@ -11,36 +11,49 @@ public:
         next = NULL;
     }
 };
-
 void pushList(Node *&node, string name)
 {
-    Node *addVel = new Node(name);
+    // create new node
+    Node *newNode = new Node(name);
+    // if base node is NULL replese null node to new node
     if (node == NULL)
     {
-        node = addVel;
+        node = newNode;
         return;
     }
+    // find the last node and add new node
     Node *temp = node;
     while (temp->next != NULL)
     {
         temp = temp->next;
     }
-    temp->next = addVel;
+    temp->next = newNode;
 }
 void unShiftList(Node *&node, string name)
 {
-    Node *addVel = new Node(name);
-    addVel->next = node;
-    node = addVel;
+    // create new node
+    Node *newNode = new Node(name);
+    // linked base node to new node
+    newNode->next = node;
+    // make newnode as a base node
+    node = newNode;
 }
 void printLinkedList(Node *node)
 {
     while (node != NULL)
     {
-        cout << node->name << " ";
+        cout << node->name;
+        if (node->next != NULL)
+        {
+            cout << "->"
+                 << " ";
+        }
+
         node = node->next;
     }
+    cout << endl;
 }
+
 int main()
 {
 
