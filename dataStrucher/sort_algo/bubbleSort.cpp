@@ -18,6 +18,8 @@ int main()
         cout << "Iteration no. " << i << endl;
         for (int j = 0; j < n - 1; j++)
         {
+            if (num[j] < num[j + 1])
+                continue;
             if (num[j] > num[j + 1])
             {
                 int temp = num[j];
