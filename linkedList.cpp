@@ -156,16 +156,121 @@ findArrayAsReturn findItemDuplicateReturn(linkedList *&node, int valuee)
         retArr.returnArr[0] = i;
     return retArr;
 };
+void updateANodeByValue(linkedList *&node, int valuee, int newValue)
+{
+    linkedList *temp = node;
+    if (temp == NULL)
+    {
+        cout << "There is no value...";
+        return;
+    }
+
+    int flag = 0;
+    while (temp != NULL)
+    {
+        if (temp->value == valuee)
+        {
+            temp->value = newValue;
+            flag = 1;
+            break;
+        }
+        temp = temp->next;
+    }
+    if (flag == 0)
+    {
+        cout << valuee << " this value not find for update! " << endl;
+        return;
+    }
+}
+void updateANodeByIndex(linkedList *&node, int getIndex, int newValue)
+{
+    linkedList *temp = node;
+    if (temp == NULL)
+    {
+        cout << "There is no value...";
+        return;
+    }
+    int index = 0;
+    int flag = 0;
+    while (temp != NULL)
+    {
+        if (index == getIndex)
+        {
+            temp->value = newValue;
+            flag = 1;
+            break;
+        }
+        temp = temp->next;
+        index++;
+    }
+    if (flag == 0)
+    {
+        cout << getIndex << " this value not find for update! " << endl;
+        return;
+    }
+};
+void deletionAtHead(linkedList *&node)
+{
+
+    if (node == NULL)
+    {
+        cout << " You have no elements";
+        return;
+    }
+    linkedList *temp = node->next;
+    delete node;
+    node = temp;
+}
+void deletionAtTail(linkedList *&node)
+{
+    if (node == NULL)
+    {
+        cout << "You can't delete last element with out any value";
+        << endl;
+        return;
+    }
+
+    linkedList *temp = node;
+    while (temp != NULL)
+    {
+        if (temp->next->next == NULL)
+        {
+            linkedList *lastNode = temp->next;
+            temp->next = NULL;
+            delete lastNode;
+            return;
+        }
+        temp = temp->next;
+    }
+}
+void deletionAtSpecificPosition(linkedList *&node, int getIndex)
+{
+    linkedList *temp = node;
+    int flag = 0;
+    int index = 1;
+    while (temp != NULL)
+    {
+        if (index == getIndex)
+        {
+            linkedList *twoNext = temp->next->next;
+            delete temp->next;
+            temp->next = twoNext;
+        }
+        temp = temp->next;
+    }
+}
 int main()
 {
     linkedList *head = NULL;
-    insertAtTail(head, 1);
     insertAtTail(head, 2);
+    insertAtTail(head, 1);
     insertAtTail(head, 3);
     insertAtTail(head, 6);
     insertAtTail(head, 5);
-    insertAtTail(head, 6);
-    insertAtTail(head, 6);
+    deletionAtSpecificPosition(head, 2);
+    // insertAtTail(head, 6);
+    // insertAtTail(head, 6);
+    // updateANodeByIndex(head, 3, 9);
     // insertAtTail(head, 6);
     // insertAtTail(head, 6);
     // insertAfterValueInUniq(head, 5, 3);
@@ -175,5 +280,6 @@ int main()
     // int cou = count(head);
     // findItemDuplicate(head, 0);
     // cout << findItemUniq(head, 6);
+    // cout << endl;
     display(head);
 }
