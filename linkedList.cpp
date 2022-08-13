@@ -91,9 +91,10 @@ int findItemUniq(linkedList *&node, int valuee)
 }
 void insertAfterValueInUniq(linkedList *&node, int value, int positionValue)
 {
+    // using by previwes function
     int position = findItemUniq(node, positionValue);
     insertAtPosition(node, value, position);
-
+    // using custom
     // linkedList *newNode = new linkedList(value);
     // linkedList *temp = node;
     // while (temp != NULL)
@@ -225,8 +226,7 @@ void deletionAtTail(linkedList *&node)
 {
     if (node == NULL)
     {
-        cout << "You can't delete last element with out any value";
-        << endl;
+        cout << "You can't delete last element with out any value" << endl;
         return;
     }
 
@@ -250,24 +250,63 @@ void deletionAtSpecificPosition(linkedList *&node, int getIndex)
     int index = 1;
     while (temp != NULL)
     {
+        // cout << index<<" / "<<getIndex<<endl;
         if (index == getIndex)
         {
             linkedList *twoNext = temp->next->next;
             delete temp->next;
             temp->next = twoNext;
         }
+        index++;
         temp = temp->next;
     }
 }
+void deletionAtSpecificValue(linkedList *&node, int deletedValue)
+{
+    if (node == NULL)
+    {
+        cout << " there is no element in the collection";
+        return;
+    }
+    if (node->value == deletedValue)
+    {
+        deletionAtHead(node);
+        return;
+    }
+    int position = findItemUniq(node, deletedValue);
+    deletionAtSpecificPosition(node, position);
+    // custom code
+    //  linkedList *temp = node;
+    //  while (temp != NULL)
+    //  {
+    //      if (temp->next == NULL)
+    //      {
+    //          cout << deletedValue << " is not in the collection";
+    //          return;
+    //      }
+
+    //     if (temp->next->value == deletedValue)
+    //     {
+    //         linkedList *nextNode = temp->next->next;
+    //         // cout<<nextNode->value;
+    //         delete temp->next;
+    //         temp->next = nextNode;
+    //         return;
+    //     }
+    //     temp = temp->next;
+    // }
+};
 int main()
 {
     linkedList *head = NULL;
-    insertAtTail(head, 2);
     insertAtTail(head, 1);
+    insertAtTail(head, 2);
     insertAtTail(head, 3);
-    insertAtTail(head, 6);
+    insertAtTail(head, 4);
     insertAtTail(head, 5);
-    deletionAtSpecificPosition(head, 2);
+    deletionAtSpecificValue(head, 6);
+    // deletionAtTail(head);
+    // deletionAtSpecificPosition(head, 2);
     // insertAtTail(head, 6);
     // insertAtTail(head, 6);
     // updateANodeByIndex(head, 3, 9);
