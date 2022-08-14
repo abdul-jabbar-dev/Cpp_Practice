@@ -296,6 +296,26 @@ void deletionAtSpecificValue(linkedList *&node, int deletedValue)
     //     temp = temp->next;
     // }
 };
+linkedList *reverseCollection(linkedList *&node)
+{
+
+    linkedList *prev = NULL;
+    linkedList *current = node;
+    linkedList *next = node->next;
+    while (true)
+    {
+        current->next = prev;
+        prev = current;
+        current = next;
+        if (current == NULL)
+        {
+            break;
+        }
+
+        next = next->next;
+    }
+    return prev;
+};
 int main()
 {
     linkedList *head = NULL;
@@ -304,7 +324,8 @@ int main()
     insertAtTail(head, 3);
     insertAtTail(head, 4);
     insertAtTail(head, 5);
-    deletionAtSpecificValue(head, 6);
+    linkedList *reverse = reverseCollection(head);
+    // deletionAtSpecificValue(head, 6);
     // deletionAtTail(head);
     // deletionAtSpecificPosition(head, 2);
     // insertAtTail(head, 6);
@@ -315,10 +336,9 @@ int main()
     // insertAfterValueInUniq(head, 5, 3);
     // findArrayAsReturn t;
     // t = findItemDuplicateReturn(head, 5);
-
     // int cou = count(head);
     // findItemDuplicate(head, 0);
     // cout << findItemUniq(head, 6);
     // cout << endl;
-    display(head);
+    display(reverse);
 }
