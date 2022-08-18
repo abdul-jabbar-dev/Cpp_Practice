@@ -16,10 +16,11 @@ public:
 };
 class myStack
 {
-public:
     Node *head = NULL;
     Node *top = NULL;
     int count = 0;
+
+public:
     // push
     void push(int value)
     {
@@ -87,8 +88,12 @@ public:
         }
         return top->value;
     }
-
-    // empty
+    // size
+    int size()
+    {
+        return count;
+    }
+    //  empty
     bool isEmpty()
     {
         if (count == 0)
