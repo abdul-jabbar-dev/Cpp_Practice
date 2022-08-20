@@ -1,30 +1,32 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+template <typename N>
 class Node
 {
 public:
-    int value;
+    N value;
     Node *next;
     Node *prev;
-    Node(int val)
+    Node(N val)
     {
         value = val;
         prev = NULL;
         next = NULL;
     }
 };
+template <typename M>
 class myStack
 {
-    Node *head = NULL;
-    Node *top = NULL;
+    Node<M> *head = NULL;
+    Node<M> *top = NULL;
     int count = 0;
 
 public:
     // push
-    void push(int value)
+    void push(M value)
     {
-        Node *newNode = new Node(value);
+        Node<M> *newNode = new Node<M>(value);
         if (head == NULL)
         {
             head = top = newNode;
@@ -49,10 +51,10 @@ public:
         }
     }
     // pop
-    int pop()
+    M pop()
     {
-        int getValue;
-        Node *deletedValue = top;
+        M getValue;
+        Node<M> *deletedValue = top;
         if (head == NULL)
         {
             cout << "No element for pop" << endl;
@@ -67,7 +69,7 @@ public:
             return getValue;
         }
 
-        Node *temp = head;
+        Node<M> *temp = head;
         while (temp->next != deletedValue)
         {
             temp = temp->next;
@@ -78,27 +80,27 @@ public:
         count--;
         return getValue;
     }
-    // top value
-    int topValue()
-    {
-        if (top == NULL)
-        {
-            cout << "No value founded" << endl;
-            return -1;
-        }
-        return top->value;
-    }
-    // size
-    int size()
-    {
-        return count;
-    }
-    //  empty
-    bool isEmpty()
-    {
-        if (count == 0)
-            return false;
-        else
-            return true;
-    }
+    // // top value
+    // int topValue()
+    // {
+    //     if (top == NULL)
+    //     {
+    //         cout << "No value founded" << endl;
+    //         return -1;
+    //     }
+    //     return top->value;
+    // }
+    // // size
+    // int size()
+    // {
+    //     return count;
+    // }
+    // //  empty
+    // bool isEmpty()
+    // {
+    //     if (count == 0)
+    //         return false;
+    //     else
+    //         return true;
+    // }
 };
