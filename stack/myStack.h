@@ -80,27 +80,27 @@ public:
         count--;
         return getValue;
     }
-    // // top value
-    // int topValue()
-    // {
-    //     if (top == NULL)
-    //     {
-    //         cout << "No value founded" << endl;
-    //         return -1;
-    //     }
-    //     return top->value;
-    // }
-    // // size
-    // int size()
-    // {
-    //     return count;
-    // }
-    // //  empty
-    // bool isEmpty()
-    // {
-    //     if (count == 0)
-    //         return false;
-    //     else
-    //         return true;
-    // }
+    // top value
+    int topValue()
+    {
+        if (top == NULL)
+        {
+            cout << "No value founded" << endl;
+            return -1;
+        }
+        return top->value;
+    }
+    // size
+    int size()
+    {
+        return count;
+    }
+    //  empty
+    bool isEmpty()
+    {
+        if (count == 0)
+            return false;
+        else
+            return true;
+    }
 };
